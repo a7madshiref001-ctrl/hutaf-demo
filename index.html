@@ -5,381 +5,206 @@
 <script src="assets/js/demo-links.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>هُتاف HUTAF — قهوة مختصة في المدينة المنورة</title>
-<meta name="description" content="هُتاف — قهوة مختصة وحلا من شبّاك صغير في المدينة المنورة. قهوة اليوم من 5.50 ريال، بودينغ الشوكولاتة، دولتشي شوكلت، ماتشا وسبانش لاتيه.">
+<meta name="description" content="هُتاف — قهوة مختصة وحلا طازج من شبّاك صغير في المدينة المنورة. قهوة اليوم من 5.50 ريال.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F5F1EA">
 <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/hero.webp">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero.webp" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="is-loading">
+<body>
+<div class="page">
 
-<!-- ===== Preloader: الكوب بيتملي بالموجة ===== -->
-<div class="loader" aria-hidden="true">
-  <div class="loader__cup">
-    <svg viewBox="0 0 120 150" class="loader__svg">
-      <defs>
-        <clipPath id="cupClip"><path d="M14 18 H106 L96 140 Q95 146 89 146 H31 Q25 146 24 140 Z"/></clipPath>
-      </defs>
-      <g clip-path="url(#cupClip)">
-        <rect x="0" y="0" width="120" height="150" fill="#EDE6DA"/>
-        <g class="loader__fill">
-          <path class="loader__wave loader__wave--b" d="M-120 20 Q-90 8 -60 20 T0 20 T60 20 T120 20 T180 20 T240 20 V200 H-120 Z"/>
-          <path class="loader__wave loader__wave--a" d="M-120 26 Q-90 14 -60 26 T0 26 T60 26 T120 26 T180 26 T240 26 V200 H-120 Z"/>
-        </g>
-      </g>
-      <path d="M14 18 H106 L96 140 Q95 146 89 146 H31 Q25 146 24 140 Z" fill="none" stroke="#0E1C1E" stroke-width="2.4" stroke-linejoin="round"/>
-      <rect x="8" y="9" width="104" height="10" rx="5" fill="#0E1C1E"/>
-    </svg>
-  </div>
-  <svg class="loader__logo"><use href="assets/brand/sprite.svg#logo"/></svg>
-  <div class="loader__count"><span class="js-count">0</span>%</div>
-</div>
-
-<!-- ===== Nav ===== -->
+<!-- ================= NAV ================= -->
 <header class="nav" id="nav">
-  <a href="#top" class="nav__logo" aria-label="هُتاف — الرئيسية">
+  <a href="#top" class="nav__logo" aria-label="هُتاف — أول الصفحة">
     <svg viewBox="0 0 157.8 79.0"><use href="assets/brand/sprite.svg#logo"/></svg>
   </a>
-  <nav class="nav__links" aria-label="القائمة الرئيسية">
-    <a href="#signatures">الأصناف</a>
-    <a href="#menu">القائمة</a>
-    <a href="#combo">ركّب كومبوك</a>
-    <a href="#box">بوكس الجمعات</a>
-    <a href="#window">الشبّاك</a>
-    <a href="#visit">زورنا</a>
+
+  <!-- أنت فين دلوقتي (موبايل) -->
+  <p class="nav__where js-where" aria-hidden="true"><b class="js-where-no">01</b><span class="js-where-name" lang="en">About</span></p>
+
+  <nav class="nav__links" aria-label="أقسام الصفحة">
+    <a href="#about" data-nav="about" lang="en">About</a>
+    <a href="#favorites" data-nav="favorites" lang="en">Favorites</a>
+    <a href="#menu" data-nav="menu" lang="en">Menu</a>
+    <a href="#offers" data-nav="offers" lang="en">Offers</a>
+    <a href="#visit" data-nav="visit" lang="en">Visit</a>
   </nav>
+
   <div class="nav__actions">
-    <button class="tray-btn js-open-tray" aria-label="سلة الطلب">
+    <button class="tray-btn js-open-tray" aria-label="طلبك">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8h11l-1.1 11.2a1.6 1.6 0 0 1-1.6 1.4H9.2a1.6 1.6 0 0 1-1.6-1.4L6.5 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 8h14M9 8V6.6a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <span class="tray-btn__label">طلبك</span>
       <span class="tray-btn__count js-tray-count">0</span>
     </button>
-    <button class="nav__burger js-burger" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span></button>
+    <button class="nav__burger js-burger" aria-label="الأقسام" aria-expanded="false" aria-controls="sheet"><span></span><span></span></button>
   </div>
 </header>
 
-<div class="drawer-nav" aria-hidden="true">
-  <a href="#signatures">الأصناف</a>
-  <a href="#menu">القائمة الكاملة</a>
-  <a href="#combo">ركّب كومبوك</a>
-  <a href="#box">بوكس الجمعات</a>
-  <a href="#seasons">مواسمنا</a>
-  <a href="#window">الشبّاك</a>
-  <a href="#visit">زورنا</a>
-  <p class="drawer-nav__foot">قهوة مختصة · المدينة المنورة</p>
+<!-- قايمة الأقسام (موبايل) -->
+<div class="sheet" id="sheet" hidden>
+  <a href="#about"><b>01</b><span lang="en">About</span><small>عن هُتاف</small></a>
+  <a href="#favorites"><b>02</b><span lang="en">Favorites</span><small>الأكثر طلبًا</small></a>
+  <a href="#menu"><b>03</b><span lang="en">Menu</span><small>القائمة كاملة</small></a>
+  <a href="#offers"><b>04</b><span lang="en">Offers</span><small>العروض والبوكس</small></a>
+  <a href="#visit"><b>05</b><span lang="en">Visit</span><small>الموقع والمواعيد</small></a>
 </div>
 
 <main>
 
-<!-- ===== 1. HERO ===== -->
+<!-- ================= HERO ================= -->
 <section class="hero" id="top">
-  <div class="hero__stage">
-    <div class="hero__media">
-      <video class="hero__video js-hero-video" muted playsinline preload="auto" poster="assets/img/hero.webp"
-             data-src-desktop="assets/video/hero.mp4" data-src-mobile="assets/video/hero-m.mp4"
-             data-poster-mobile="assets/img/hero-m.webp" aria-hidden="true"></video>
-      <div class="hero__chip hero__chip--a js-chip">
-        <span class="hero__chip-dot"></span>
-        <span><b>قهوة اليوم</b><em>تبدأ من 5.50 ر.س</em></span>
-      </div>
-      <div class="hero__chip hero__chip--b js-chip">
-        <svg viewBox="0 0 55 37" aria-hidden="true"><use href="assets/brand/sprite.svg#pudding"/></svg>
-        <span><b>بودينغ هُتاف</b><em>المفضّل عند الكُل</em></span>
-      </div>
+  <div class="hero__img">
+    <img src="assets/img/hero.webp" width="1375" height="768" alt="كوب قهوة هُتاف المثلّجة على حجر فاتح مع ظل سعفة نخل" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero__copy wrap">
+    <p class="kicker" lang="en">Specialty Coffee · Al Madinah</p>
+    <h1 class="hero__title">
+      كوبٌ يستاهل
+      <span class="sr-only">هُتاف</span>
+      <svg class="hero__logo" viewBox="0 0 157.3 51.6" aria-hidden="true"><use href="assets/brand/sprite.svg#logo-ar"/></svg>
+    </h1>
+    <p class="hero__lead">قهوة مختصة وحلا طازج من شبّاك صغير في المدينة المنورة. قهوة اليوم تبدأ من <b>5.50</b> ريال.</p>
+    <div class="hero__ctas">
+      <a href="#menu" class="btn btn--ink">شوف القائمة</a>
+      <a href="#offers" class="btn btn--line">العروض</a>
     </div>
-
-    <div class="hero__copy">
-      <p class="eyebrow hero__eyebrow js-hero-in"><span class="eyebrow__line"></span>قهوة مختصة · المدينة المنورة</p>
-      <h1 class="hero__title">
-        <span class="hero__line"><span class="js-hero-in">كوبٌ يستاهل</span></span>
-        <span class="hero__line hero__line--logo"><span class="js-hero-in">
-          <span class="sr-only">هُتاف</span>
-          <svg class="hero__logo" viewBox="0 0 157.3 51.6" aria-hidden="true"><use href="assets/brand/sprite.svg#logo-ar"/></svg>
-        </span></span>
-      </h1>
-      <p class="hero__en js-hero-in" lang="en" dir="ltr">Coffee worth <i>cheering</i> for.</p>
-      <p class="hero__lead js-hero-in">من شبّاكنا الصغير في المدينة المنورة: قهوة مختصة تبدأ من 5.50 ريال، وحلا يخلّي يومك أحلى. «قهوة فاخرة.. وتجربة لا تُنسى».</p>
-      <div class="hero__ctas js-hero-in">
-        <a href="#menu" class="btn btn--ink js-magnetic"><span>اطلب للاستلام</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="#signatures" class="btn btn--ghost js-magnetic"><span>شوف الأصناف</span></a>
-      </div>
-    </div>
-
-    <div class="hero__end" aria-hidden="true">
-      <p class="eyebrow"><span class="eyebrow__line"></span>قهوة اليوم</p>
-      <p class="hero__end-price"><b>5.50</b><span>ر.س<br>الصغير</span></p>
-      <p class="hero__end-sub">والكبير بـ 7.50 ر.س · من الشبّاك لإيدك</p>
-    </div>
-
-    <div class="hero__scroll js-hero-in" aria-hidden="true">
-      <svg viewBox="0 0 60 12"><path class="hero__scroll-wave" d="M0 6 Q7.5 0 15 6 T30 6 T45 6 T60 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span>اسحب للأسفل</span>
-    </div>
+    <p class="demo-strip"><b>نسخة تجريبية</b> مش الموقع الرسمي لهُتاف</p>
   </div>
 </section>
 
-<!-- ===== شريط متحرك ===== -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span>قهوة مختصة</span><i>✦</i><span>بودينغ الشوكولاتة</span><i>✦</i><span>دولتشي شوكلت</span><i>✦</i><span>V60 بطريقتنا</span><i>✦</i><span>ماتشا هُتاف</span><i>✦</i><span>سبانش لاتيه</span><i>✦</i><span>كوكيز طازجة</span><i>✦</i><span>Speciality Coffee</span><i>✦</i>
-    <span>قهوة مختصة</span><i>✦</i><span>بودينغ الشوكولاتة</span><i>✦</i><span>دولتشي شوكلت</span><i>✦</i><span>V60 بطريقتنا</span><i>✦</i><span>ماتشا هُتاف</span><i>✦</i><span>سبانش لاتيه</span><i>✦</i><span>كوكيز طازجة</span><i>✦</i><span>Speciality Coffee</span><i>✦</i>
-  </div>
-</div>
+<!-- فهرس الصفحة -->
+<nav class="index wrap" aria-label="محتوى الصفحة">
+  <a href="#about"><b>01</b><span lang="en">About</span></a>
+  <a href="#favorites"><b>02</b><span lang="en">Favorites</span></a>
+  <a href="#menu"><b>03</b><span lang="en">Menu</span></a>
+  <a href="#offers"><b>04</b><span lang="en">Offers</span></a>
+  <a href="#visit"><b>05</b><span lang="en">Visit</span></a>
+</nav>
 
-<!-- ===== 2. STORY / Manifesto ===== -->
-<section class="story" id="story">
+<!-- ================= 01 ABOUT ================= -->
+<section class="sec" id="about" data-chapter="01" data-name="About">
   <div class="wrap">
-    <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>حكايتنا باختصار</p>
-    <p class="story__text js-words">وسط الزحمة… دايمًا فيه كوب يستاهل يكون اختيارك الأول. كوب يخلّي مزاجك سعيد، وطبقة حلا كل لقمة فيها تحكي.</p>
-    <div class="story__facts">
-      <div class="fact" data-reveal>
-        <span class="fact__num"><span class="js-counter" data-to="5.5" data-dec="2">0</span><small>ر.س</small></span>
-        <span class="fact__label">تبدأ قهوة اليوم</span>
-      </div>
-      <div class="fact" data-reveal>
-        <span class="fact__num"><span class="js-counter" data-to="20" data-prefix="+">0</span></span>
-        <span class="fact__label">صنف بين قهوة ومشروبات وحلا</span>
-      </div>
-      <div class="fact" data-reveal>
-        <span class="fact__num"><span class="js-counter" data-to="1">0</span><small>شبّاك</small></span>
-        <span class="fact__label">تطلب منه وتكمّل طريقك</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <header class="chap">
+      <p class="chap__no" lang="en">01</p>
+      <h2 class="chap__title" lang="en">About Hutaf</h2>
+      <p class="chap__ar">شبّاك صغير… وتجربة ما تنتسى</p>
+    </header>
 
-<!-- ===== 3. SIGNATURES (horizontal) ===== -->
-<section class="sig" id="signatures">
-  <div class="sig__pin">
-    <div class="sig__head wrap">
-      <div>
-        <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>Signatures</p>
-        <h2 class="h2" data-split>أصناف تتكلّم <span class="t-teal">عن نفسها</span></h2>
-      </div>
-      <p class="sig__hint" data-reveal>الأكثر طلبًا من شبّاك هُتاف — كمّل سحب وشوفها كلها.</p>
-    </div>
-    <div class="sig__track js-sig-track">
-      <!-- cards rendered from data -->
-    </div>
-    <div class="sig__progress"><span class="js-sig-bar"></span></div>
-  </div>
-</section>
-
-<!-- ===== 4. PUDDING feature ===== -->
-<section class="feature" id="pudding">
-  <div class="wrap feature__grid">
-    <div class="feature__media" data-clip>
-      <img src="assets/img/pudding.webp" alt="بودينغ هُتاف بالشوكولاتة في علبة بيضاء بغطاء لبني" loading="lazy" data-parallax="-8">
-      <span class="feature__stamp">
-        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="stampPath" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
-          <text direction="ltr"><textPath href="#stampPath" startOffset="50%" text-anchor="middle" textLength="268">HUTAF SWEET ✦ المفضّل عند الكُل ✦</textPath></text></svg>
-        <svg class="feature__stamp-icon" viewBox="0 0 55 37" aria-hidden="true"><use href="assets/brand/sprite.svg#pudding"/></svg>
-      </span>
-    </div>
-    <div class="feature__copy">
-      <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>The Hutaf Pudding</p>
-      <h2 class="h2" data-split>بودينغ يصنع <span class="t-teal">يومك</span></h2>
-      <p class="lead" data-reveal>بودينغ شوكولاتة ملغّم، ناعم وغني، يتعبّى طازج في علبة هُتاف بغطائها اللبني. الصنف اللي الناس ترجع له كل مرة… ومع قهوة اليوم يصير الثنائي الكامل.</p>
-      <ul class="feature__list" data-reveal>
-        <li><span>بودينغ هُتاف</span><b>11 ر.س</b></li>
-        <li><span>بودينغ + قهوة اليوم كبير</span><b>18.50 ر.س</b></li>
-      </ul>
-      <div class="feature__ctas" data-reveal>
-        <button class="btn btn--teal js-add" data-id="pudding"><span>أضف البودينغ</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-        <a href="#combo" class="link-arrow">ركّبه مع مشروبك ←</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 5. COMBO builder ===== -->
-<section class="combo" id="combo">
-  <div class="wrap">
-    <div class="combo__head">
-      <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>Build your pair</p>
-      <h2 class="h2" data-split>ركّب <span class="t-teal">كومبوك</span></h2>
-      <p class="lead" data-reveal>اختار مشروب وحلا، ونحسبلك الإجمالي على طول. ثنائيك جاهز من الشبّاك.</p>
-    </div>
-    <div class="combo__grid">
-      <div class="combo__col" data-reveal>
-        <h3 class="combo__title"><span>01</span> المشروب</h3>
-        <div class="combo__chips js-combo-drinks" role="radiogroup" aria-label="اختار المشروب"></div>
-      </div>
-      <div class="combo__col" data-reveal>
-        <h3 class="combo__title"><span>02</span> الحلا</h3>
-        <div class="combo__chips js-combo-sweets" role="radiogroup" aria-label="اختار الحلا"></div>
-      </div>
-      <aside class="receipt" data-reveal>
-        <div class="receipt__top">
-          <svg viewBox="0 0 157.8 79.0" aria-hidden="true"><use href="assets/brand/sprite.svg#logo"/></svg>
-          <span>إيصال الثنائي</span>
-        </div>
-        <div class="receipt__visual">
-          <img class="js-combo-img-a" src="assets/img/daily-sm.webp" alt="">
-          <img class="js-combo-img-b" src="assets/img/pudding-sm.webp" alt="">
-        </div>
-        <p class="receipt__name js-combo-name">الكلاسيكي</p>
-        <ul class="receipt__lines">
-          <li><span class="js-combo-drink">—</span><b class="js-combo-drink-p">—</b></li>
-          <li><span class="js-combo-sweet">—</span><b class="js-combo-sweet-p">—</b></li>
-        </ul>
-        <div class="receipt__total"><span>الإجمالي</span><b><span class="js-combo-total">0.00</span> ر.س</b></div>
-        <div class="receipt__wave" aria-hidden="true"></div>
-        <button class="btn btn--ink btn--full js-combo-add"><span>أضف الثنائي لطلبك</span></button>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 6. MENU ===== -->
-<section class="menu" id="menu">
-  <div class="wrap">
-    <div class="menu__head">
-      <div>
-        <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>The Menu</p>
-        <h2 class="h2" data-split>القائمة <span class="t-teal">كاملة</span></h2>
-      </div>
-      <p class="menu__note" data-reveal>الأسعار بالريال السعودي وشاملة الضريبة. السعرات الحرارية مكتوبة جنب كل صنف.</p>
-    </div>
-    <div class="tabs" role="tablist" aria-label="أقسام القائمة">
-      <span class="tabs__ink js-tabs-ink" aria-hidden="true"></span>
-    </div>
-    <div class="menu__panels js-menu-panels"></div>
-  </div>
-</section>
-
-<!-- ===== 7. COFFEE BOX ===== -->
-<section class="box" id="box">
-  <div class="box__media">
-    <img src="assets/img/majlis.webp" alt="جمعة في المجلس مع بوكس قهوة هُتاف وأكواب وحلا وتمر" loading="lazy" data-parallax="-10">
-  </div>
-  <div class="box__card" data-reveal>
-    <p class="eyebrow"><span class="eyebrow__line"></span>For the gathering</p>
-    <h2 class="h2">بوكس قهوة اليوم<br><span class="t-teal">دايم بالجمعات</span></h2>
-    <p>معه تحلى السوالف والأوقات. بوكس قهوة اليوم يكفي الجمعة كلها، وزوّده بكوكيز وبراونيز لعيون الضيوف.</p>
-    <div class="box__price"><b>29</b><span>ر.س<br>للبوكس</span></div>
-    <button class="btn btn--teal js-add" data-id="box"><span>أضف البوكس</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-  </div>
-</section>
-
-<!-- ===== 8. SEASONS (students & occasions) ===== -->
-<section class="seasons" id="seasons">
-  <div class="wrap">
-    <div class="seasons__head">
-      <div>
-        <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>Every season</p>
-        <h2 class="h2" data-split>معك في <span class="t-teal">كل موسم</span></h2>
-      </div>
-      <p class="lead" data-reveal>من أول يوم دراسة لآخر اختبار، ومن اليوم الوطني لليوم العالمي للقهوة: هُتاف دايمًا عنده عرض على قدّ يومك.</p>
-    </div>
-    <div class="seasons__grid">
-      <figure class="seasons__media" data-clip>
-        <img src="assets/img/school.webp" alt="كوب هُتاف لبني وعلبة حلا على مكتب مذاكرة مع دفتر وكتاب" loading="lazy" data-parallax="-6">
-        <figcaption>ونس المذاكرة ☕</figcaption>
+    <div class="about">
+      <figure class="about__img reveal">
+        <img src="assets/img/store.webp" width="1200" height="896" alt="واجهة محل هُتاف اللبني مع شبّاك الطلب وقت المغرب" loading="lazy" decoding="async">
       </figure>
-      <ol class="seasons__list">
-        <li class="season" data-reveal>
-          <span class="season__tag">العودة للمدارس</span>
-          <h3>قهوة كبير + بودينغ</h3>
-          <p>بداية سنة دراسية بطعم أحلى، للطلاب والمعلمين والأهالي.</p>
-          <b class="season__price">13.95 <small>ر.س</small></b>
-        </li>
-        <li class="season" data-reveal>
-          <span class="season__tag">موسم الاختبارات</span>
-          <h3>قهوة اليوم كبير + كوب كوكيز</h3>
-          <p>طاقة المذاكرة بسعر يناسب مصروفك.</p>
-          <b class="season__price">10 <small>ر.س</small></b>
-        </li>
-        <li class="season" data-reveal>
-          <span class="season__tag">اليوم الوطني</span>
-          <h3>بودينغ + قهوة اليوم صغير</h3>
-          <p>نحتفل مع الوطن، وبسعر رقمه من القلب.</p>
-          <b class="season__price">9.96 <small>ر.س</small></b>
-        </li>
-        <li class="season" data-reveal>
-          <span class="season__tag">اليوم العالمي للقهوة</span>
-          <h3>قهوتك علينا</h3>
-          <p>مع كل طلب بودينغ، القهوة هدية من هُتاف.</p>
-          <b class="season__price">مجانًا</b>
-        </li>
-      </ol>
-    </div>
-    <p class="seasons__note" data-reveal>عروض سابقة من صفحتنا. تابعنا عشان ما يفوتك الجاي.</p>
-  </div>
-</section>
-
-<!-- ===== 9. THE WINDOW ===== -->
-<section class="window" id="window">
-  <div class="wrap window__grid">
-    <div class="window__copy">
-      <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>The window</p>
-      <h2 class="h2" data-split>شبّاك صغير… <span class="t-teal">وتجربة ما تنتسى</span></h2>
-      <p class="lead" data-reveal>هُتاف مو مجلس طويل، هُتاف لحظة حلوة في نص يومك. توقف عند الشبّاك، اطلب، واستلم كوبك وحلاك وأنت في طريقك.</p>
-      <ol class="steps">
-        <li data-reveal><span>1</span><div><b>اختار</b><p>من القائمة أو ركّب ثنائيك.</p></div></li>
-        <li data-reveal><span>2</span><div><b>اطلب</b><p>من الشبّاك مباشرة، أو جهّز طلبك من هنا.</p></div></li>
-        <li data-reveal><span>3</span><div><b>استلم</b><p>كوبك جاهز… وكمّل طريقك بمزاج.</p></div></li>
-      </ol>
-    </div>
-    <div class="window__media">
-      <figure class="window__a" data-clip><img src="assets/img/store.webp" alt="واجهة محل هُتاف اللبني مع شبّاك الطلب وقت المغرب" loading="lazy" data-parallax="-6"></figure>
-      <figure class="window__b" data-clip><img src="assets/img/window.webp" alt="يد تسلّم كوب قهوة هُتاف وعلبة بودينغ من شبّاك الطلب" loading="lazy"></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 10. MUG ===== -->
-<section class="mug" id="mug">
-  <div class="wrap mug__grid">
-    <figure class="mug__media" data-clip><img src="assets/img/mug.webp" alt="مق هُتاف السيراميك اللبني فيه قهوة سوداء" loading="lazy"></figure>
-    <div class="mug__copy">
-      <p class="eyebrow" data-reveal><span class="eyebrow__line"></span>The Hutaf mug</p>
-      <h2 class="h2" data-split>مقّك معك… <span class="t-teal">والتعبئة علينا</span></h2>
-      <p class="lead" data-reveal>اشترِ مق هُتاف وخذ أول تعبئة مجانًا. أو خذ المق مع مشروب مجاني بسعر واحد.</p>
-      <div class="mug__row" data-reveal>
-        <div class="mug__price"><b>30</b><span>ر.س<br>المق + مشروب مجاني</span></div>
-        <button class="btn btn--ink js-add" data-id="mug"><span>أضف المق</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <div class="about__copy">
+        <p class="about__text reveal">هُتاف قهوة مختصة في المدينة المنورة، بشبّاك استلام. توقّف عند الشبّاك، اطلب، وخذ كوبك وحلاك وكمّل طريقك.</p>
+        <ul class="points">
+          <li class="reveal"><b lang="en">Takeaway window</b><span>اطلب واستلم من الشبّاك مباشرة</span></li>
+          <li class="reveal"><b lang="en">Specialty coffee</b><span>قهوة اليوم، V60، اسبريسو وسبانش لاتيه</span></li>
+          <li class="reveal"><b lang="en">Fresh sweets</b><span>بودينغ، دولتشي شوكلت، كوكيز وبراونيز</span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 11. VISIT ===== -->
-<section class="visit" id="visit">
-  <div class="visit__wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path class="js-wave-a" d="M0 60 Q180 20 360 60 T720 60 T1080 60 T1440 60 V120 H0Z"/></svg>
+<!-- ================= 02 FAVORITES ================= -->
+<section class="sec sec--alt" id="favorites" data-chapter="02" data-name="Favorites">
+  <div class="wrap">
+    <header class="chap">
+      <p class="chap__no" lang="en">02</p>
+      <h2 class="chap__title" lang="en">Our Favorites</h2>
+      <p class="chap__ar">الأكثر طلبًا من شبّاك هُتاف</p>
+    </header>
   </div>
-  <div class="visit__inner">
-    <div class="wrap visit__grid">
-      <div>
-        <p class="eyebrow eyebrow--light" data-reveal><span class="eyebrow__line"></span>Visit us</p>
-        <h2 class="h2 h2--light" data-split>تعال قول <span class="visit__hey">هُتاف</span></h2>
-        <p class="visit__lead" data-reveal>المدينة المنورة. شبّاكنا اللبني ما يضيع عليك.</p>
+  <div class="fav js-fav" role="list"></div>
+  <p class="wrap fav__hint">اسحب يمين ويسار لباقي الأصناف</p>
+</section>
+
+<!-- ================= 03 MENU ================= -->
+<section class="sec" id="menu" data-chapter="03" data-name="Menu">
+  <div class="wrap">
+    <header class="chap">
+      <p class="chap__no" lang="en">03</p>
+      <h2 class="chap__title" lang="en">The Menu</h2>
+      <p class="chap__ar">كل الأصناف بالأسعار والسعرات · الأسعار بالريال</p>
+    </header>
+    <div class="tabs js-tabs" role="tablist" aria-label="أقسام القائمة"></div>
+    <div class="js-panels"></div>
+  </div>
+</section>
+
+<!-- ================= 04 OFFERS ================= -->
+<section class="sec sec--alt" id="offers" data-chapter="04" data-name="Offers">
+  <div class="wrap">
+    <header class="chap">
+      <p class="chap__no" lang="en">04</p>
+      <h2 class="chap__title" lang="en">Offers &amp; Boxes</h2>
+      <p class="chap__ar">بوكس الجمعات، مق هُتاف، وعروض المواسم</p>
+    </header>
+
+    <div class="deals">
+      <article class="deal deal--big reveal">
+        <img src="assets/img/majlis.webp" width="1375" height="768" alt="جمعة في المجلس مع بوكس قهوة هُتاف وأكواب وحلا وتمر" loading="lazy" decoding="async">
+        <div class="deal__body">
+          <p class="deal__tag" lang="en">Coffee Box</p>
+          <h3>بوكس قهوة اليوم للجمعات</h3>
+          <p>معه تحلى السوالف والأوقات.</p>
+          <div class="deal__foot"><span class="price">29<small>ر.س</small></span><button class="add js-add" data-id="box" aria-label="أضف بوكس القهوة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+      <article class="deal reveal">
+        <img src="assets/img/mug-sm.webp" width="480" height="476" alt="مق هُتاف السيراميك اللبني" loading="lazy" decoding="async">
+        <div class="deal__body">
+          <p class="deal__tag" lang="en">Hutaf Mug</p>
+          <h3>المق + مشروب مجاني</h3>
+          <p>اشترِ المق وأول تعبئة علينا.</p>
+          <div class="deal__foot"><span class="price">30<small>ر.س</small></span><button class="add js-add" data-id="mug" aria-label="أضف المق"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="season reveal">
+      <div class="season__head">
+        <p class="deal__tag" lang="en">Seasonal</p>
+        <h3>عروض المواسم</h3>
+        <p>من أول يوم دراسة لآخر اختبار. هذي عروض سابقة، تابعنا عشان ما يفوتك الجاي.</p>
       </div>
-      <div class="visit__cards">
-        <div class="vcard" data-reveal>
-          <span class="vcard__k">الموقع</span>
-          <b>المدينة المنورة</b>
-          <a href="https://maps.google.com/" class="vcard__link">افتح في الخرائط ←</a>
-        </div>
-        <div class="vcard" data-reveal>
-          <span class="vcard__k">مواعيد الشبّاك</span>
-          <b>يوميًا · 4:00 م – 2:00 ص</b>
-          <span class="vcard__s">قد تتغيّر في المواسم</span>
-        </div>
-        <div class="vcard" data-reveal>
-          <span class="vcard__k">تابعنا</span>
-          <b dir="ltr">@h__utaf</b>
-          <div class="vcard__social">
-            <a href="https://instagram.com/" aria-label="إنستجرام">Instagram</a>
-            <a href="https://tiktok.com/" aria-label="تيك توك">TikTok</a>
-          </div>
-        </div>
+      <ul class="season__list">
+        <li><span lang="en">Back to school</span><b>قهوة كبير + بودينغ</b><em>13.95 <small>ر.س</small></em></li>
+        <li><span lang="en">Exams</span><b>قهوة اليوم كبير + كوب كوكيز</b><em>10 <small>ر.س</small></em></li>
+        <li><span lang="en">National Day</span><b>بودينغ + قهوة اليوم صغير</b><em>9.96 <small>ر.س</small></em></li>
+        <li><span lang="en">Coffee Day</span><b>القهوة علينا مع كل بودينغ</b><em>مجانًا</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 VISIT ================= -->
+<section class="sec" id="visit" data-chapter="05" data-name="Visit">
+  <div class="wrap">
+    <header class="chap">
+      <p class="chap__no" lang="en">05</p>
+      <h2 class="chap__title" lang="en">Visit Us</h2>
+      <p class="chap__ar">تعال قول هُتاف</p>
+    </header>
+    <div class="visit">
+      <div class="vcard reveal">
+        <p class="vcard__k" lang="en">Location</p>
+        <b>المدينة المنورة</b>
+        <a href="https://maps.google.com/" class="link">افتح في الخرائط</a>
+      </div>
+      <div class="vcard reveal">
+        <p class="vcard__k" lang="en">Hours</p>
+        <b>يوميًا · 4:00 م – 2:00 ص</b>
+        <span class="vcard__s">قد تتغيّر في المواسم</span>
+      </div>
+      <div class="vcard reveal">
+        <p class="vcard__k" lang="en">Follow</p>
+        <b dir="ltr" lang="en">@h__utaf</b>
+        <span class="vcard__social"><a href="https://instagram.com/" lang="en">Instagram</a><a href="https://tiktok.com/" lang="en">TikTok</a></span>
       </div>
     </div>
   </div>
@@ -388,60 +213,45 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap foot__top">
-    <p class="foot__tag">قهوة فاخرة.. وتجربة لا تُنسى <span class="heart" aria-hidden="true"></span></p>
-    <nav class="foot__links" aria-label="روابط سريعة">
-      <a href="#menu">القائمة</a><a href="#combo">ركّب كومبوك</a><a href="#box">بوكس الجمعات</a><a href="#visit">زورنا</a>
-    </nav>
-  </div>
-  <div class="foot__mark" aria-hidden="true">
-    <svg viewBox="0 0 123.5 26.8"><use href="assets/brand/sprite.svg#logo-en"/></svg>
-  </div>
-  <div class="wrap foot__bottom">
-    <span>© هُتاف HUTAF — المدينة المنورة</span>
-    <span class="foot__demo">نسخة عرض مقترحة · <a href="https://a7madshiref001-ctrl.github.io/athr/" data-keep target="_blank" rel="noopener">Built by ATHR</a></span>
+  <div class="wrap foot__in">
+    <svg class="foot__logo" viewBox="0 0 157.8 79.0" aria-hidden="true"><use href="assets/brand/sprite.svg#logo"/></svg>
+    <p class="foot__tag">قهوة فاخرة.. وتجربة لا تُنسى</p>
+    <p class="foot__demo">نسخة عرض مقترحة، مش الموقع الرسمي لهُتاف · <a href="https://a7madshiref001-ctrl.github.io/athr/" data-keep target="_blank" rel="noopener" lang="en">Built by ATHR</a></p>
   </div>
 </footer>
 
-<!-- ===== Tray (السلة) ===== -->
-<div class="tray" aria-hidden="true">
+</div><!-- /.page -->
+
+<!-- ================= السلة ================= -->
+<div class="tray" hidden>
   <div class="tray__scrim js-close-tray"></div>
-  <aside class="tray__panel" role="dialog" aria-label="طلبك" aria-modal="true">
+  <aside class="tray__panel" role="dialog" aria-modal="true" aria-label="طلبك">
     <div class="tray__head">
-      <h3>طلبك</h3>
-      <button class="tray__x js-close-tray" aria-label="إغلاق"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <h3><span lang="en">Your order</span> · طلبك</h3>
+      <button class="icon-btn js-close-tray" aria-label="إغلاق"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
     </div>
     <div class="tray__body js-tray-body"></div>
     <div class="tray__foot">
-      <div class="tray__sum"><span>الإجمالي</span><b><span class="js-tray-total">0.00</span> ر.س</b></div>
+      <div class="tray__sum"><span>الإجمالي</span><b><span class="js-tray-total">0.00</span> <small>ر.س</small></b></div>
       <p class="tray__hint">استلام من الشبّاك · الدفع عند الاستلام</p>
-      <button class="btn btn--ink btn--full js-checkout" disabled><span>أرسل الطلب للشبّاك</span></button>
+      <button class="btn btn--ink btn--full js-checkout" disabled>أرسل الطلب للشبّاك</button>
     </div>
   </aside>
 </div>
 
-<div class="done" aria-hidden="true">
-  <div class="done__card" role="dialog" aria-label="تم استلام الطلب">
-    <svg class="done__cup" viewBox="0 0 120 150" aria-hidden="true">
-      <path d="M14 18 H106 L96 140 Q95 146 89 146 H31 Q25 146 24 140 Z" fill="#F5F1EA" stroke="#0E1C1E" stroke-width="2.4"/>
-      <path class="done__wave" d="M18 64 Q33 54 48 64 T78 64 T108 64 L96 140 Q95 146 89 146 H31 Q25 146 24 140 Z" fill="#2E9EA8"/>
-      <rect x="8" y="9" width="104" height="10" rx="5" fill="#0E1C1E"/>
-    </svg>
-    <p class="done__k">رقم طلبك</p>
+<div class="done" hidden>
+  <div class="done__card" role="dialog" aria-modal="true" aria-label="تم الطلب">
+    <svg class="done__cup" viewBox="0 0 40 48" aria-hidden="true"><use href="assets/brand/sprite.svg#cup"/></svg>
+    <p class="done__k" lang="en">Order number</p>
     <p class="done__num js-order-num">#H-000</p>
     <p class="done__t">طلبك وصل الشبّاك وبيتجهّز الحين.</p>
-    <p class="done__demo">هذي نسخة عرض: الطلب ما يتبعت فعليًا لهُتاف.</p>
-    <button class="btn btn--ink js-close-done"><span>تمام</span></button>
+    <p class="done__demo">نسخة عرض: الطلب ما يتبعت فعليًا لهُتاف.</p>
+    <button class="btn btn--ink js-close-done">تمام</button>
   </div>
 </div>
 
 <div class="toast js-toast" role="status" aria-live="polite"></div>
 
-<div class="demo-badge" role="note"><b>نسخة تجريبية</b><span>الطلبات والأرقام هنا للتوضيح بس — مش الموقع الرسمي لهُتاف</span></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/js/menu-data.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
